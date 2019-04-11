@@ -19,3 +19,6 @@ This is an example with one sender, one api instance, one broker, one listener.
 This is an example with two senders, one api instance, one broker, three listeners.
 
 ![animation](https://raw.githubusercontent.com/dbl4ck/ActiveMQScratch/master/Docs/Images/animation-multiple.gif)
+
+# Changelog
+11/04/2019: Receiver now implements listener pattern rather than a synchronous loop. Asynchrony++
