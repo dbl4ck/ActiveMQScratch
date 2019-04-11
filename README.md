@@ -9,3 +9,9 @@ Consists of:
 * **ActiveMQScratch.OrderReceiver** - Console App, subscribes to Apache MQ, grabs orders and prints to console.
 
 Tested against a broker using a stock setup of [Apache Artemis](https://activemq.apache.org/components/artemis/)
+
+## Watch it go!
+
+This is an example with two listeners, one api instance, one broker, three liseners.
+
+![animation](https://raw.githubusercontent.com/dbl4ck/ActiveMQScratch/master/Docs/Images/animation.gif)
