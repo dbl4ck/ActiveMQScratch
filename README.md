@@ -12,6 +12,10 @@ Tested against a broker using a stock setup of [Apache Artemis](https://activemq
 
 ## Watch it go!
 
-This is an example with two listeners, one api instance, one broker, three liseners.
+This is an example with one sender, one api instance, one broker, one listener.
 
-![animation](https://raw.githubusercontent.com/dbl4ck/ActiveMQScratch/master/Docs/Images/animation.gif)
+![animation](https://raw.githubusercontent.com/dbl4ck/ActiveMQScratch/master/Docs/Images/animation-single.gif)
+
+This is an example with two senders, one api instance, one broker, three listeners.
+
+![animation](https://raw.githubusercontent.com/dbl4ck/ActiveMQScratch/master/Docs/Images/animation-multiple.gif)
