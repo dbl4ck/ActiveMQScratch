@@ -8,7 +8,7 @@ Consists of:
 * **ActiveMQScratch.Web** - WebApi2 service, receives the Order model, publishes to Apache MQ
 * **ActiveMQScratch.OrderReceiver** - Console App, subscribes to Apache MQ, grabs orders and prints to console.
 
-Tested against a broker using a stock setup of [Apache ActiveMQ Artemis)](https://activemq.apache.org/components/artemis/)
+Tested against a broker using a stock setup of [Apache ActiveMQ Artemis](https://activemq.apache.org/components/artemis/)
 
 ## Watch it go!
 
