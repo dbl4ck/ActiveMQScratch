@@ -26,52 +26,51 @@ namespace ActiveMQScratch.OrderReceiver
             using (ISession session = connection.CreateSession())
             {
                 connection.Start();
+                var destination = CreateDestination(session, _mqQueue);
+                var consumer = CreateConsumer(session, destination);
+
+                // add a listener
+                consumer.Listener += new MessageListener(OnMessage);
 
                 while (true)
                 {
-                    var order = GetNextMessage(session, _mqQueue);
-
-                    if (order != null)
-                    {
-                        Console.WriteLine(
-                            $"Received OrderId={order.OrderId}, Quantity={order.Quantity}, TotalPrice = {order.TotalPrice}");
-                    }
-
-                    Wait(50);
+                    // arbitrary main thread loop
+                    Wait(100);
                 }
             }
 
         }
+        
+        public static void OnMessage(IMessage message)
+        {
+            Order order = null;
+            if (message != null)
+            {
+                order = JsonConvert.DeserializeObject<Order>(((ITextMessage)message).Text);
+            }
 
+            if (order != null)
+            {
+                Console.WriteLine(
+                    $"Received OrderId={order.OrderId}, Quantity={order.Quantity}, TotalPrice = {order.TotalPrice}");
+            }
+
+        }
+
+        private static IDestination CreateDestination(ISession session, string queue)
+        {
+            return SessionUtil.GetDestination(session, queue);
+        }
+
+        private static IMessageConsumer CreateConsumer(ISession session, IDestination destination)
+        {
+            return session.CreateConsumer(destination);
+        }
+        
         public static void Wait(int ms)
         {
             System.Threading.Thread.Sleep(ms);
         }
-
-        private static Order GetNextMessage(ISession session, string queue)
-        {
-            Order order = null;
-            IDestination destination = SessionUtil.GetDestination(session, queue);
-
-            using (IMessageConsumer consumer = session.CreateConsumer(destination))
-            {
-                
-                ITextMessage message = (ITextMessage) consumer.Receive();
-                if (message != null)
-                {
-                    order = JsonConvert.DeserializeObject<Order>(message.Text);
-                }
-
-                // connection.close will be auto-invoked by idisposable.
-            }
-
-            return order;
-        }
-
-
-
-
-
-
+        
     }
 }
