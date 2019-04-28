@@ -1,3 +1,6 @@
+# Project Has Been Superceded by [Artemis-WebApi2-RequestReply](https://github.com/dbl4ck/Artemis-WebApi2-RequestReply) as of 28/04/2019
+
+
 # ActiveMQScratch
 
 First hour of Using WebAPI2 with ActiveMQ for deferred processing.
